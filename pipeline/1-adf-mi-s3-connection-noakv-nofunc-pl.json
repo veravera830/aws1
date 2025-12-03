@@ -22,11 +22,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"method": "GET",
 					"url": {
 						"value": "@concat('https://sts.amazonaws.com/?Action=AssumeRoleWithWebIdentity&RoleSessionName=app1&RoleArn=arn:aws:iam::',pipeline().parameters.aws_account_id,':role/', pipeline().parameters.aws_role_name,'&WebIdentityToken=', substring(activity('get ADF MI bearer via AWS S3 REST error message').output.Response, add(indexof(activity('get ADF MI bearer via AWS S3 REST error message').output.Response, 'Bearer '),length('Bearer ')), sub(sub(indexof(activity('get ADF MI bearer via AWS S3 REST error message').output.Response, '</ArgumentValue>'), indexof(activity('get ADF MI bearer via AWS S3 REST error message').output.Response,'Bearer ')), length('Bearer '))), '&Version=2011-06-15')",
 						"type": "Expression"
-					},
-					"method": "GET"
+					}
 				}
 			},
 			{
@@ -117,13 +117,14 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"method": "GET",
 					"url": {
 						"value": "@concat('https://',pipeline().parameters.aws_s3_error, '.s3.eu-central-1.amazonaws.com/')",
 						"type": "Expression"
 					},
-					"method": "GET",
 					"authentication": {
-						"type": "MSI",
+						"type": "ServicePrincipal",
+						"userTenant": "16b3c013-d300-468d-ac64-7eda0820b6d3",
 						"resource": {
 							"value": "@pipeline().parameters.azure_application_id_uri",
 							"type": "Expression"
