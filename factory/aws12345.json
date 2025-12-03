@@ -1,0 +1,7 @@
+{
+	"name": "aws12345",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned"
+	}
+}
