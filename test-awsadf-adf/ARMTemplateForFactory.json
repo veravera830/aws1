@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "test-awsadf-adf"
+			"defaultValue": "aws12345"
 		},
 		"AKV_S3_token_properties_typeProperties_baseUrl": {
 			"type": "string",
